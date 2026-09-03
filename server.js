@@ -13,6 +13,17 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// Ensure DB is initialized before handling any requests (Crucial for Vercel cold starts)
+app.use(async (req, res, next) => {
+  try {
+    await db.getDb();
+    next();
+  } catch (err) {
+    console.error('Database initialization error:', err);
+    res.status(500).json({ error: 'Database failed to initialize' });
+  }
+});
+
 // Serve static files
 app.use(express.static(path.join(__dirname, 'public')));
 
