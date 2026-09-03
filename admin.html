@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="description" content="Admin Dashboard — SIH 2026 Internal Hackathon Registration Portal">
+  <meta name="theme-color" content="#0f172a">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Admin — SIH 2026 Registration Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+  <!-- ═══════════════════ LOGIN SCREEN ═══════════════════ -->
+  <div id="admin-login-screen" class="screen active">
+    <div class="admin-login">
+      <div class="admin-login-card">
+        <div class="flag-accent" style="font-size:28px;margin-bottom:8px;">🔐</div>
+        <h2 class="step-title">ADMIN LOGIN</h2>
+        <p class="step-subtitle">SIH 2026 Registration Portal</p>
+
+        <div class="form-group">
+          <label class="form-label" for="admin-password">Password</label>
+          <input type="password" id="admin-password" class="form-input" placeholder="Enter admin password" autocomplete="current-password">
+          <span class="form-error" id="admin-password-error"></span>
+        </div>
+
+        <button class="btn-primary" style="margin-top:8px;" onclick="adminLogin()">LOGIN →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════ DASHBOARD SCREEN ═══════════════════ -->
+  <div id="admin-dashboard-screen" class="screen">
+    <div class="admin-header">
+      <div style="display:flex;justify-content:space-between;align-items:center;">
+        <div>
+          <h1 class="admin-title">📊 Dashboard</h1>
+          <p class="admin-subtitle">SIH 2026 Internal Hackathon</p>
+        </div>
+        <button class="admin-logout-btn" onclick="adminLogout()">Logout</button>
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="stat-cards" id="stat-cards">
+      <div class="stat-card">
+        <div class="stat-value" id="stat-teams">–</div>
+        <div class="stat-label">TOTAL TEAMS</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" id="stat-students">–</div>
+        <div class="stat-label">TOTAL STUDENTS</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" id="stat-today">–</div>
+        <div class="stat-label">TODAY'S REGISTRATIONS</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" id="stat-field" style="font-size:14px;">–</div>
+        <div class="stat-label">MOST SELECTED FIELD</div>
+      </div>
+    </div>
+
+    <!-- Search -->
+    <div class="admin-search">
+      <input type="text" class="search-input" id="admin-search-input" placeholder="Search team, name, roll, email..." oninput="debounceSearch()">
+    </div>
+
+    <!-- Filters -->
+    <div class="admin-filters">
+      <select class="filter-select" id="filter-dept" onchange="loadTeams()">
+        <option value="">All Departments</option>
+        <option value="CSE">CSE</option>
+        <option value="CSE (AI & ML)">CSE (AI & ML)</option>
+        <option value="CSE (Data Science)">CSE (DS)</option>
+        <option value="CSIT">CSIT</option>
+        <option value="ECE">ECE</option>
+        <option value="EEE">EEE</option>
+        <option value="Mechanical">Mech</option>
+        <option value="Civil">Civil</option>
+        <option value="Other">Other</option>
+      </select>
+
+      <select class="filter-select" id="filter-year" onchange="loadTeams()">
+        <option value="">All Years</option>
+        <option value="1st Year">1st Year</option>
+        <option value="2nd Year">2nd Year</option>
+        <option value="3rd Year">3rd Year</option>
+        <option value="4th Year">4th Year</option>
+      </select>
+
+      <select class="filter-select" id="filter-field" onchange="loadTeams()">
+        <option value="">All Fields</option>
+        <option value="Artificial Intelligence / Machine Learning">AI / ML</option>
+        <option value="Web Development">Web Dev</option>
+        <option value="Mobile App Development">Mobile Apps</option>
+        <option value="Cybersecurity">Cybersecurity</option>
+        <option value="Internet of Things (IoT)">IoT</option>
+        <option value="Blockchain">Blockchain</option>
+        <option value="Cloud Computing">Cloud</option>
+        <option value="Data Science">Data Science</option>
+        <option value="Robotics">Robotics</option>
+        <option value="Healthcare Technology">Healthcare</option>
+        <option value="Agriculture Technology">AgriTech</option>
+        <option value="Education Technology">EdTech</option>
+        <option value="FinTech">FinTech</option>
+        <option value="Smart Cities">Smart Cities</option>
+        <option value="Other">Other</option>
+      </select>
+    </div>
+
+    <!-- Teams List -->
+    <div class="admin-teams" id="admin-teams-list"></div>
+
+    <!-- Export Button -->
+    <div class="admin-export-bar">
+      <button class="btn-primary" onclick="exportCSV()">📥 EXPORT TO CSV</button>
+    </div>
+  </div>
+
+  <!-- ═══════════════════ TEAM DETAIL MODAL ═══════════════════ -->
+  <div class="admin-modal-overlay" id="team-modal" onclick="closeModal(event)">
+    <div class="admin-modal" onclick="event.stopPropagation()">
+      <div class="admin-modal-handle"></div>
+      <div id="modal-content"></div>
+    </div>
+  </div>
+
+  <script src="/js/admin.js"></script>
+</body>
+</html>
