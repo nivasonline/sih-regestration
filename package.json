@@ -1,0 +1,29 @@
+{
+  "name": "sih-2026-registration",
+  "version": "1.0.0",
+  "description": "Smart India Hackathon 2026 - Internal Hackathon Registration Portal @ AITS, Tirupati",
+  "main": "server.js",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "keywords": [
+    "sih",
+    "hackathon",
+    "registration"
+  ],
+  "author": "AITS Tirupati",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.1",
+    "json2csv": "^6.0.0-alpha.2",
+    "nodemailer": "^6.9.16",
+    "razorpay": "^2.9.8",
+    "sql.js": "^1.11.0"
+  }
+}
