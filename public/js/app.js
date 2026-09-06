@@ -31,6 +31,9 @@ function startRegistration() {
   updateProgressBar();
   showScreen('screen-register');
   showStep(1);
+  try {
+    history.pushState({ screen: 'screen-register', step: 1 }, '', '#step-1');
+  } catch(e) {}
 }
 
 function goHome() {
@@ -183,6 +186,9 @@ function nextStep(fromStep) {
   currentStep = fromStep + 1;
   updateProgressBar();
   showStep(currentStep);
+  try {
+    history.pushState({ screen: 'screen-register', step: currentStep }, '', `#step-${currentStep}`);
+  } catch(e) {}
 }
 
 function prevStep(fromStep) {
@@ -192,7 +198,30 @@ function prevStep(fromStep) {
   currentStep = fromStep - 1;
   updateProgressBar();
   showStep(currentStep);
+  try {
+    history.pushState({ screen: 'screen-register', step: currentStep }, '', `#step-${currentStep}`);
+  } catch(e) {}
 }
+
+// Mobile & Browser Back Button (popstate) Handler
+window.addEventListener('popstate', (event) => {
+  const registerScreen = document.getElementById('screen-register');
+  if (!registerScreen || !registerScreen.classList.contains('active')) return;
+
+  if (event.state && event.state.screen === 'screen-register') {
+    currentStep = event.state.step || 1;
+    updateProgressBar();
+    showStep(currentStep);
+  } else {
+    if (currentStep > 1) {
+      currentStep--;
+      updateProgressBar();
+      showStep(currentStep);
+    } else {
+      goHome();
+    }
+  }
+});
 
 // ─── Solution Selection ──────────────────────────────────────────────────────
 
