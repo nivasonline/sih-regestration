@@ -6,33 +6,24 @@ const nodemailer = require('nodemailer');
 function createTransporter() {
   if (process.env.EMAIL_ENABLED === 'true' && process.env.SMTP_USER && process.env.SMTP_PASS) {
     const host = process.env.SMTP_HOST || 'smtp.gmail.com';
+    const port = parseInt(process.env.SMTP_PORT || '465', 10);
     const isGmail = host.toLowerCase().includes('gmail');
 
-    if (isGmail) {
-      return nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-          user: process.env.SMTP_USER.trim(),
-          pass: process.env.SMTP_PASS.trim()
-        },
-        connectionTimeout: 10000,
-        greetingTimeout: 10000,
-        socketTimeout: 15000
-      });
-    }
-
-    const port = parseInt(process.env.SMTP_PORT || '465', 10);
+    // For Gmail on cloud platforms (Railway/Render), port 465 with secure: true bypasses blocked 587 ports
     return nodemailer.createTransport({
-      host: host,
-      port: port,
-      secure: port === 465,
+      host: isGmail ? 'smtp.gmail.com' : host,
+      port: isGmail ? 465 : port,
+      secure: isGmail ? true : (port === 465),
       auth: {
         user: process.env.SMTP_USER.trim(),
         pass: process.env.SMTP_PASS.trim()
       },
-      connectionTimeout: 10000,
-      greetingTimeout: 10000,
-      socketTimeout: 15000
+      tls: {
+        rejectUnauthorized: false
+      },
+      connectionTimeout: 15000,
+      greetingTimeout: 15000,
+      socketTimeout: 20000
     });
   }
   return null;
