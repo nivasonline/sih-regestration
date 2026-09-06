@@ -4,7 +4,8 @@ const nodemailer = require('nodemailer');
  * Create the email transporter based on environment configuration.
  */
 function createTransporter() {
-  if (process.env.EMAIL_ENABLED === 'true' && process.env.SMTP_USER && process.env.SMTP_PASS) {
+  const isEnabled = String(process.env.EMAIL_ENABLED || '').toLowerCase() === 'true';
+  if (isEnabled && process.env.SMTP_USER && process.env.SMTP_PASS) {
     const host = process.env.SMTP_HOST || 'smtp.gmail.com';
     const port = parseInt(process.env.SMTP_PORT || '465', 10);
     const isGmail = host.toLowerCase().includes('gmail');
