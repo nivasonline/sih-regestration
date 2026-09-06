@@ -5,14 +5,34 @@ const nodemailer = require('nodemailer');
  */
 function createTransporter() {
   if (process.env.EMAIL_ENABLED === 'true' && process.env.SMTP_USER && process.env.SMTP_PASS) {
+    const host = process.env.SMTP_HOST || 'smtp.gmail.com';
+    const isGmail = host.toLowerCase().includes('gmail');
+
+    if (isGmail) {
+      return nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+          user: process.env.SMTP_USER.trim(),
+          pass: process.env.SMTP_PASS.trim()
+        },
+        connectionTimeout: 10000,
+        greetingTimeout: 10000,
+        socketTimeout: 15000
+      });
+    }
+
+    const port = parseInt(process.env.SMTP_PORT || '465', 10);
     return nodemailer.createTransport({
-      host: process.env.SMTP_HOST || 'smtp.gmail.com',
-      port: parseInt(process.env.SMTP_PORT || '587'),
-      secure: false,
+      host: host,
+      port: port,
+      secure: port === 465,
       auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS
-      }
+        user: process.env.SMTP_USER.trim(),
+        pass: process.env.SMTP_PASS.trim()
+      },
+      connectionTimeout: 10000,
+      greetingTimeout: 10000,
+      socketTimeout: 15000
     });
   }
   return null;
