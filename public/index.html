@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="description" content="Register your team for the Smart India Hackathon 2026 Internal Hackathon at AITS, Tirupati. Innovate, Collaborate, Create, Transform!">
+  <meta name="theme-color" content="#0f172a">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>SIH 2026 — Internal Hackathon Registration | AITS, Tirupati</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <!--                          HOME SCREEN                                  -->
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <div id="screen-home" class="screen active">
+
+    <div class="home-content">
+      <!-- Top Badge -->
+      <div class="org-badge">
+        <span>Institute Innovation Cell (IIC)</span>
+      </div>
+
+      <!-- Hero -->
+      <div class="hero-section">
+        <div class="flag-accent">🇮🇳</div>
+        <h1 class="hero-title">
+          <span class="hero-pre">SMART INDIA HACKATHON</span>
+          <span class="hero-year">2026</span>
+        </h1>
+        <div class="hero-divider"></div>
+        <div class="hero-subtitle">
+          <span>INTERNAL HACKATHON</span>
+          <span class="hero-at">@ AITS, TIRUPATI</span>
+        </div>
+      </div>
+
+      <!-- Info Cards -->
+      <div class="info-cards">
+        <div class="info-card">
+          <span class="info-icon">📅</span>
+          <div class="info-text">
+            <span class="info-label">DATE</span>
+            <span class="info-value">7–12 SEPT 2026</span>
+          </div>
+        </div>
+        <div class="info-card">
+          <span class="info-icon">⏰</span>
+          <div class="info-text">
+            <span class="info-label">TIME</span>
+            <span class="info-value">11:00 AM</span>
+          </div>
+        </div>
+        <div class="info-card">
+          <span class="info-icon">📍</span>
+          <div class="info-text">
+            <span class="info-label">VENUE</span>
+            <span class="info-value">MBA Seminar Hall</span>
+          </div>
+        </div>
+        <div class="info-card">
+          <span class="info-icon">👥</span>
+          <div class="info-text">
+            <span class="info-label">TEAM SIZE</span>
+            <span class="info-value">3 MEMBERS</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Description -->
+      <p class="home-desc">
+        AITS, Tirupati is conducting the Internal Hackathon for Smart India Hackathon 2026, 
+        giving students an opportunity to <strong>innovate, collaborate</strong> and build 
+        <strong>impactful solutions</strong> to real-world problems.
+      </p>
+
+      <!-- Tagline -->
+      <div class="tagline">
+        "Let's Innovate • Collaborate • Create • Transform!"
+      </div>
+
+      <!-- SPOC -->
+      <div class="spoc-badge">
+        SPOC: <strong>DILIP KUMAR N</strong>
+      </div>
+    </div>
+
+    <!-- Sticky CTA -->
+    <div class="sticky-cta">
+      <button id="btn-register" class="btn-primary" onclick="startRegistration()">
+        🚀 REGISTER YOUR TEAM
+      </button>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <!--                       REGISTRATION FORM                               -->
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <div id="screen-register" class="screen">
+    <!-- Progress Bar -->
+    <div class="progress-bar-container">
+      <div class="progress-steps">
+        <div class="progress-step active" data-step="1">
+          <div class="step-num">01</div>
+          <div class="step-label">Member 1</div>
+        </div>
+        <div class="progress-line"><div class="progress-line-fill" data-after="1"></div></div>
+        <div class="progress-step" data-step="2">
+          <div class="step-num">02</div>
+          <div class="step-label">Member 2</div>
+        </div>
+        <div class="progress-line"><div class="progress-line-fill" data-after="2"></div></div>
+        <div class="progress-step" data-step="3">
+          <div class="step-num">03</div>
+          <div class="step-label">Member 3</div>
+        </div>
+        <div class="progress-line"><div class="progress-line-fill" data-after="3"></div></div>
+        <div class="progress-step" data-step="4">
+          <div class="step-num">04</div>
+          <div class="step-label">Solution</div>
+        </div>
+        <div class="progress-line"><div class="progress-line-fill" data-after="4"></div></div>
+        <div class="progress-step" data-step="5">
+          <div class="step-num">05</div>
+          <div class="step-label">Payment</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 1: Member 1 -->
+    <div id="step-1" class="form-step active">
+      <div class="form-step-content">
+        <div class="step-header">
+          <h2 class="step-title">👤 TEAM MEMBER 1</h2>
+          <p class="step-subtitle">Enter the details of the first team member</p>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="m1-name">Full Name</label>
+          <input type="text" id="m1-name" class="form-input" placeholder="Enter full name" autocomplete="name">
+          <span class="form-error" id="m1-name-error"></span>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="m1-roll">Roll Number</label>
+          <input type="text" id="m1-roll" class="form-input" placeholder="e.g. 21A51A0501" autocomplete="off">
+          <span class="form-error" id="m1-roll-error"></span>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="m1-email">Email Address</label>
+          <input type="email" id="m1-email" class="form-input" placeholder="name@example.com" autocomplete="email">
+          <span class="form-error" id="m1-email-error"></span>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="m1-dept">Department / Branch</label>
+          <select id="m1-dept" class="form-select">
+            <option value="">Select department</option>
+            <option value="CSE">CSE</option>
+            <option value="CSE (AI & ML)">CSE (AI & ML)</option>
+            <option value="CSE (Data Science)">CSE (Data Science)</option>
+            <option value="CSIT">CSIT</option>
+            <option value="ECE">ECE</option>
+            <option value="EEE">EEE</option>
+            <option value="Mechanical">Mechanical</option>
+            <option value="Civil">Civil</option>
+            <option value="Other">Other</option>
+          </select>
+          <span class="form-error" id="m1-dept-error"></span>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="m1-year">Year of Study</label>
+          <select id="m1-year" class="form-select">
+            <option value="">Select year</option>
+            <option value="1st Year">1st Year</option>
+            <option value="2nd Year">2nd Year</option>
+            <option value="3rd Year">3rd Year</option>
+            <option value="4th Year">4th Year</option>
+          </select>
+          <span class="form-error" id="m1-year-error"></span>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button class="btn-primary" onclick="nextStep(1)">CONTINUE →</button>
+      </div>
+    </div>
+
+    <!-- Step 2: Member 2 -->
+    <div id="step-2" class="form-step">
+      <div class="form-step-content">
+        <div class="step-header">
+          <h2 class="step-title">👤 TEAM MEMBER 2</h2>
+          <p class="step-subtitle">Enter the details of the second team member</p>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="m2-name">Full Name</label>
+          <input type="text" id="m2-name" class="form-input" placeholder="Enter full name" autocomplete="name">
+          <span class="form-error" id="m2-name-error"></span>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="m2-roll">Roll Number</label>
+          <input type="text" id="m2-roll" class="form-input" placeholder="e.g. 21A51A0502" autocomplete="off">
+          <span class="form-error" id="m2-roll-error"></span>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="m2-email">Email Address</label>
+          <input type="email" id="m2-email" class="form-input" placeholder="name@example.com" autocomplete="email">
+          <span class="form-error" id="m2-email-error"></span>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="m2-dept">Department / Branch</label>
+          <select id="m2-dept" class="form-select">
+            <option value="">Select department</option>
+            <option value="CSE">CSE</option>
+            <option value="CSE (AI & ML)">CSE (AI & ML)</option>
+            <option value="CSE (Data Science)">CSE (Data Science)</option>
+            <option value="CSIT">CSIT</option>
+            <option value="ECE">ECE</option>
+            <option value="EEE">EEE</option>
+            <option value="Mechanical">Mechanical</option>
+            <option value="Civil">Civil</option>
+            <option value="Other">Other</option>
+          </select>
+          <span class="form-error" id="m2-dept-error"></span>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="m2-year">Year of Study</label>
+          <select id="m2-year" class="form-select">
+            <option value="">Select year</option>
+            <option value="1st Year">1st Year</option>
+            <option value="2nd Year">2nd Year</option>
+            <option value="3rd Year">3rd Year</option>
+            <option value="4th Year">4th Year</option>
+          </select>
+          <span class="form-error" id="m2-year-error"></span>
+        </div>
+      </div>
+
+      <div class="form-actions two-buttons">
+        <button class="btn-secondary" onclick="prevStep(2)">← BACK</button>
+        <button class="btn-primary" onclick="nextStep(2)">CONTINUE →</button>
+      </div>
+    </div>
+
+    <!-- Step 3: Member 3 -->
+    <div id="step-3" class="form-step">
+      <div class="form-step-content">
+        <div class="step-header">
+          <h2 class="step-title">👤 TEAM MEMBER 3</h2>
+          <p class="step-subtitle">Enter the details of the third team member</p>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="m3-name">Full Name</label>
+          <input type="text" id="m3-name" class="form-input" placeholder="Enter full name" autocomplete="name">
+          <span class="form-error" id="m3-name-error"></span>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="m3-roll">Roll Number</label>
+          <input type="text" id="m3-roll" class="form-input" placeholder="e.g. 21A51A0503" autocomplete="off">
+          <span class="form-error" id="m3-roll-error"></span>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="m3-email">Email Address</label>
+          <input type="email" id="m3-email" class="form-input" placeholder="name@example.com" autocomplete="email">
+          <span class="form-error" id="m3-email-error"></span>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="m3-dept">Department / Branch</label>
+          <select id="m3-dept" class="form-select">
+            <option value="">Select department</option>
+            <option value="CSE">CSE</option>
+            <option value="CSE (AI & ML)">CSE (AI & ML)</option>
+            <option value="CSE (Data Science)">CSE (Data Science)</option>
+            <option value="CSIT">CSIT</option>
+            <option value="ECE">ECE</option>
+            <option value="EEE">EEE</option>
+            <option value="Mechanical">Mechanical</option>
+            <option value="Civil">Civil</option>
+            <option value="Other">Other</option>
+          </select>
+          <span class="form-error" id="m3-dept-error"></span>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="m3-year">Year of Study</label>
+          <select id="m3-year" class="form-select">
+            <option value="">Select year</option>
+            <option value="1st Year">1st Year</option>
+            <option value="2nd Year">2nd Year</option>
+            <option value="3rd Year">3rd Year</option>
+            <option value="4th Year">4th Year</option>
+          </select>
+          <span class="form-error" id="m3-year-error"></span>
+        </div>
+      </div>
+
+      <div class="form-actions two-buttons">
+        <button class="btn-secondary" onclick="prevStep(3)">← BACK</button>
+        <button class="btn-primary" onclick="nextStep(3)">CONTINUE →</button>
+      </div>
+    </div>
+
+    <!-- Step 4: Solution Field -->
+    <div id="step-4" class="form-step">
+      <div class="form-step-content">
+        <div class="step-header">
+          <h2 class="step-title">💡 YOUR SOLUTION</h2>
+          <p class="step-subtitle">Select the primary field in which your team plans to develop its solution.</p>
+        </div>
+
+        <div class="solution-grid" id="solution-grid">
+          <div class="solution-card" data-field="Artificial Intelligence / Machine Learning" onclick="selectSolution(this)">
+            <span class="solution-icon">🤖</span>
+            <span class="solution-name">Artificial Intelligence / Machine Learning</span>
+          </div>
+          <div class="solution-card" data-field="Web Development" onclick="selectSolution(this)">
+            <span class="solution-icon">🌐</span>
+            <span class="solution-name">Web Development</span>
+          </div>
+          <div class="solution-card" data-field="Mobile App Development" onclick="selectSolution(this)">
+            <span class="solution-icon">📱</span>
+            <span class="solution-name">Mobile App Development</span>
+          </div>
+          <div class="solution-card" data-field="Cybersecurity" onclick="selectSolution(this)">
+            <span class="solution-icon">🔐</span>
+            <span class="solution-name">Cybersecurity</span>
+          </div>
+          <div class="solution-card" data-field="Internet of Things (IoT)" onclick="selectSolution(this)">
+            <span class="solution-icon">🌐</span>
+            <span class="solution-name">Internet of Things (IoT)</span>
+          </div>
+          <div class="solution-card" data-field="Blockchain" onclick="selectSolution(this)">
+            <span class="solution-icon">⛓️</span>
+            <span class="solution-name">Blockchain</span>
+          </div>
+          <div class="solution-card" data-field="Cloud Computing" onclick="selectSolution(this)">
+            <span class="solution-icon">☁️</span>
+            <span class="solution-name">Cloud Computing</span>
+          </div>
+          <div class="solution-card" data-field="Data Science" onclick="selectSolution(this)">
+            <span class="solution-icon">📊</span>
+            <span class="solution-name">Data Science</span>
+          </div>
+          <div class="solution-card" data-field="Robotics" onclick="selectSolution(this)">
+            <span class="solution-icon">🤖</span>
+            <span class="solution-name">Robotics</span>
+          </div>
+          <div class="solution-card" data-field="Healthcare Technology" onclick="selectSolution(this)">
+            <span class="solution-icon">🏥</span>
+            <span class="solution-name">Healthcare Technology</span>
+          </div>
+          <div class="solution-card" data-field="Agriculture Technology" onclick="selectSolution(this)">
+            <span class="solution-icon">🌾</span>
+            <span class="solution-name">Agriculture Technology</span>
+          </div>
+          <div class="solution-card" data-field="Education Technology" onclick="selectSolution(this)">
+            <span class="solution-icon">🎓</span>
+            <span class="solution-name">Education Technology</span>
+          </div>
+          <div class="solution-card" data-field="FinTech" onclick="selectSolution(this)">
+            <span class="solution-icon">💰</span>
+            <span class="solution-name">FinTech</span>
+          </div>
+          <div class="solution-card" data-field="Smart Cities" onclick="selectSolution(this)">
+            <span class="solution-icon">🏙️</span>
+            <span class="solution-name">Smart Cities</span>
+          </div>
+          <div class="solution-card" data-field="Other" onclick="selectSolution(this)">
+            <span class="solution-icon">✨</span>
+            <span class="solution-name">Other</span>
+          </div>
+        </div>
+        <span class="form-error" id="solution-error" style="text-align:center;display:block;margin-top:8px;"></span>
+      </div>
+
+      <div class="form-actions two-buttons">
+        <button class="btn-secondary" onclick="prevStep(4)">← BACK</button>
+        <button class="btn-primary" onclick="nextStep(4)">CONTINUE →</button>
+      </div>
+    </div>
+
+    <!-- Step 5: Payment -->
+    <div id="step-5" class="form-step">
+      <div class="form-step-content">
+        <div class="step-header">
+          <h2 class="step-title">💳 PAYMENT</h2>
+          <p class="step-subtitle">Scan the QR code to pay the registration fee, then enter your Transaction ID below.</p>
+        </div>
+
+        <div class="qr-container" style="text-align: center; margin: 20px 0; padding: 20px; background: rgba(255,255,255,0.05); border-radius: 16px; border: 1px solid rgba(255,255,255,0.1);">
+          <img src="/images/qr.png" alt="UPI QR Code" style="width: 200px; height: 200px; border-radius: 12px; border: 4px solid white; box-shadow: 0 8px 32px rgba(0,0,0,0.2);">
+          <p style="margin-top: 12px; font-size: 14px; color: var(--text-muted); font-weight: 500;">Scan to Pay</p>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="payment-tx">Transaction / UTR ID</label>
+          <input type="text" id="payment-tx" class="form-input" placeholder="e.g. 123456789012" style="font-family: monospace; font-size: 16px; letter-spacing: 1px;">
+          <span class="form-error" id="payment-tx-error"></span>
+        </div>
+      </div>
+
+      <div class="form-actions two-buttons">
+        <button class="btn-secondary" onclick="prevStep(5)">← BACK</button>
+        <button class="btn-primary" onclick="goToReview()">REVIEW REGISTRATION →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <!--                          REVIEW SCREEN                                -->
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <div id="screen-review" class="screen">
+    <div class="review-content">
+      <h2 class="step-title" style="text-align:center;margin-bottom:4px;">🔍 REVIEW YOUR REGISTRATION</h2>
+      <p class="step-subtitle" style="text-align:center;margin-bottom:24px;">Please verify all details before submitting</p>
+
+      <!-- Team Header -->
+      <div class="review-team-header">
+        <span class="review-team-icon">👥</span>
+        <div>
+          <div class="review-team-title">TEAM</div>
+          <div class="review-team-count">3 Members</div>
+        </div>
+      </div>
+
+      <!-- Member Cards -->
+      <div id="review-members"></div>
+
+      <!-- Solution Field -->
+      <div class="review-solution" id="review-solution"></div>
+
+      <!-- Payment -->
+      <div class="review-payment" style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.1); padding:16px; border-radius:12px; margin-bottom:24px;">
+        <div style="font-size:12px; color:var(--text-muted); text-transform:uppercase; letter-spacing:1px; margin-bottom:4px;">Transaction ID</div>
+        <div id="review-transaction" style="font-family:monospace; font-size:16px; color:var(--primary); font-weight:600; word-break:break-all;"></div>
+      </div>
+
+      <!-- Confirmation Checkbox -->
+      <label class="confirm-checkbox" id="confirm-label">
+        <input type="checkbox" id="confirm-check">
+        <span class="checkmark"></span>
+        <span class="confirm-text">I confirm that all the information provided is correct.</span>
+      </label>
+      <span class="form-error" id="confirm-error"></span>
+
+      <div class="form-actions two-buttons" style="margin-top:16px;">
+        <button class="btn-secondary" onclick="backToForm()">← EDIT</button>
+        <button class="btn-primary" id="btn-submit" onclick="submitRegistration()">🚀 SUBMIT</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <!--                         LOADING SCREEN                                -->
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <div id="screen-loading" class="screen">
+    <div class="loading-content">
+      <div class="loading-spinner">
+        <div class="spinner-ring"></div>
+        <div class="spinner-ring inner"></div>
+        <div class="spinner-icon">🚀</div>
+      </div>
+      <h2 class="loading-title">Registering your team...</h2>
+      <p class="loading-subtitle">Setting up your hackathon journey</p>
+      <div class="loading-dots">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <!--                         SUCCESS SCREEN                                -->
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <div id="screen-success" class="screen">
+    <div class="success-content">
+      <!-- Confetti Canvas -->
+      <canvas id="confetti-canvas"></canvas>
+
+      <div class="success-icon animate-bounce-in">🎉</div>
+      <h1 class="success-title animate-fade-in">REGISTRATION SUCCESSFUL!</h1>
+
+      <!-- Team Number Card -->
+      <div class="team-number-card animate-scale-in">
+        <div class="tn-label">YOUR TEAM NUMBER</div>
+        <div class="tn-value" id="success-team-number">SIH-AITS-001</div>
+        <div class="tn-note">Keep this Team Number safe for future communication.</div>
+      </div>
+
+      <!-- Event Info -->
+      <div class="success-info-cards">
+        <div class="success-info-row">
+          <span>📅</span><span>7–12 September 2026</span>
+        </div>
+        <div class="success-info-row">
+          <span>⏰</span><span>11:00 AM</span>
+        </div>
+        <div class="success-info-row">
+          <span>📍</span><span>MBA Seminar Hall / E-Classroom</span>
+        </div>
+      </div>
+
+      <!-- Team Members -->
+      <div class="success-members" id="success-members"></div>
+
+      <!-- Solution -->
+      <div class="success-solution" id="success-solution"></div>
+
+      <!-- Email Notice -->
+      <div class="email-notice">
+        <span>📧</span>
+        <span>A confirmation email has been sent to all three registered email addresses.</span>
+      </div>
+
+      <!-- Actions -->
+      <div class="success-actions">
+        <button class="btn-primary" onclick="downloadConfirmation()">📄 DOWNLOAD CONFIRMATION</button>
+        <button class="btn-secondary" onclick="goHome()" style="width:100%;">🏠 BACK TO HOME</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/app.js"></script>
+</body>
+</html>

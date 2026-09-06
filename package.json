@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "Smart India Hackathon 2026 - Internal Hackathon Registration Portal @ AITS, Tirupati",
   "main": "server.js",
-  "engines": {
-    "node": ">=18.0.0"
-  },
   "scripts": {
     "start": "node server.js",
     "dev": "node --watch server.js"
@@ -22,6 +19,7 @@
     "dotenv": "^16.4.7",
     "express": "^4.21.1",
     "json2csv": "^6.0.0-alpha.2",
+    "mysql2": "^3.24.3",
     "nodemailer": "^6.9.16",
     "razorpay": "^2.9.8",
     "sql.js": "^1.11.0"
