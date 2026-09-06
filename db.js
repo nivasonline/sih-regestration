@@ -133,9 +133,19 @@ async function initDb() {
       ssl: sslOption,
       waitForConnections: true,
       connectionLimit: 10,
+      maxIdle: 10,
+      idleTimeout: 30000,
       queueLimit: 0,
       enableKeepAlive: true,
-      keepAliveInitialDelay: 0
+      keepAliveInitialDelay: 10000
+    });
+
+    pool.on('error', (err) => {
+      console.warn('⚠️ [MySQL Pool Event Warning]', err.message || err);
+      if (err.code === 'PROTOCOL_CONNECTION_LOST' || err.code === 'ECONNRESET') {
+        pool = null;
+        dbReadyPromise = null;
+      }
     });
 
     // Ensure table schema
@@ -203,6 +213,34 @@ function getDb() {
 }
 
 /**
+ * Retry helper for MySQL queries if connection is closed or lost.
+ */
+async function withMySQLRetry(actionFn) {
+  try {
+    return await actionFn();
+  } catch (error) {
+    const isClosedError =
+      error.code === 'PROTOCOL_CONNECTION_LOST' ||
+      error.code === 'ECONNRESET' ||
+      error.code === 'PIPE_CLOSED' ||
+      (error.message && (
+        error.message.includes('closed state') ||
+        error.message.includes('Connection lost') ||
+        error.message.includes('ECONNREFUSED')
+      ));
+
+    if (isClosedError) {
+      console.warn('⚠️ [MySQL Connection Recovery] Re-establishing database pool...');
+      pool = null;
+      dbReadyPromise = null;
+      await initDb();
+      return await actionFn();
+    }
+    throw error;
+  }
+}
+
+/**
  * Generate sequential team number.
  */
 async function generateTeamNumber(executor) {
@@ -233,32 +271,34 @@ async function registerTeam(data) {
   }
 
   if (dbEngine === 'mysql') {
-    const conn = await pool.getConnection();
-    try {
-      await conn.beginTransaction();
-      const teamNumber = await generateTeamNumber(conn);
-      const [teamResult] = await conn.query(
-        'INSERT INTO teams (team_number, solution_field, transaction_id) VALUES (?, ?, ?)',
-        [teamNumber, solutionField, transactionId || 'N/A']
-      );
-      const teamId = teamResult.insertId;
-
-      for (let i = 0; i < members.length; i++) {
-        const m = members[i];
-        await conn.query(
-          'INSERT INTO members (team_id, member_order, full_name, roll_number, email, department, year_of_study) VALUES (?, ?, ?, ?, ?, ?, ?)',
-          [teamId, i + 1, m.fullName, m.rollNumber, m.email, m.department, m.yearOfStudy]
+    return await withMySQLRetry(async () => {
+      const conn = await pool.getConnection();
+      try {
+        await conn.beginTransaction();
+        const teamNumber = await generateTeamNumber(conn);
+        const [teamResult] = await conn.query(
+          'INSERT INTO teams (team_number, solution_field, transaction_id) VALUES (?, ?, ?)',
+          [teamNumber, solutionField, transactionId || 'N/A']
         );
-      }
+        const teamId = teamResult.insertId;
 
-      await conn.commit();
-      return { teamNumber, teamId };
-    } catch (error) {
-      await conn.rollback();
-      throw error;
-    } finally {
-      conn.release();
-    }
+        for (let i = 0; i < members.length; i++) {
+          const m = members[i];
+          await conn.query(
+            'INSERT INTO members (team_id, member_order, full_name, roll_number, email, department, year_of_study) VALUES (?, ?, ?, ?, ?, ?, ?)',
+            [teamId, i + 1, m.fullName, m.rollNumber, m.email, m.department, m.yearOfStudy]
+          );
+        }
+
+        await conn.commit();
+        return { teamNumber, teamId };
+      } catch (error) {
+        await conn.rollback();
+        throw error;
+      } finally {
+        conn.release();
+      }
+    });
   } else {
     // SQLite Mode
     const teamNumber = await generateTeamNumber();
