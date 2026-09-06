@@ -5,11 +5,13 @@ const path = require('path');
 const os = require('os');
 require('dotenv').config();
 
-const DB_HOST = process.env.DB_HOST || process.env.MYSQLHOST || process.env.MYSQL_HOST || 'localhost';
-const DB_PORT = parseInt(process.env.DB_PORT || process.env.MYSQLPORT || process.env.MYSQL_PORT || '3306', 10);
-const DB_USER = process.env.DB_USER || process.env.MYSQLUSER || process.env.MYSQL_USER || 'root';
-const DB_PASSWORD = process.env.DB_PASSWORD || process.env.MYSQLPASSWORD || process.env.MYSQL_PASSWORD || '';
-const DB_NAME = process.env.DB_NAME || process.env.MYSQLDATABASE || process.env.MYSQL_DATABASE || 'sih_registration';
+const DB_HOST_RAW = process.env.DB_HOST;
+const DB_HOST = (DB_HOST_RAW && DB_HOST_RAW !== 'localhost') ? DB_HOST_RAW : (process.env.MYSQLHOST || process.env.MYSQL_HOST || DB_HOST_RAW || 'localhost');
+const DB_PORT = parseInt(process.env.MYSQLPORT || process.env.MYSQL_PORT || process.env.DB_PORT || '3306', 10);
+const DB_USER_RAW = process.env.DB_USER;
+const DB_USER = (DB_USER_RAW && DB_USER_RAW !== 'root') ? DB_USER_RAW : (process.env.MYSQLUSER || process.env.MYSQL_USER || DB_USER_RAW || 'root');
+const DB_PASSWORD = process.env.MYSQLPASSWORD || process.env.MYSQL_PASSWORD || process.env.DB_PASSWORD || '';
+const DB_NAME = process.env.MYSQLDATABASE || process.env.MYSQL_DATABASE || process.env.DB_NAME || 'sih_registration';
 const DB_SSL = process.env.DB_SSL === 'true' || process.env.MYSQL_SSL === 'true';
 
 let dbEngine = 'mysql'; // 'mysql' | 'sqlite'
