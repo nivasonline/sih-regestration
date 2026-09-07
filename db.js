@@ -248,14 +248,14 @@ async function generateTeamNumber(executor) {
     const conn = executor || pool;
     const [rows] = await conn.query('SELECT MAX(id) AS maxId FROM teams');
     const maxId = rows[0]?.maxId || 0;
-    return `SIH-AITS-${String(maxId + 1).padStart(3, '0')}`;
+    return `CSIT-AITS-${String(maxId + 1).padStart(3, '0')}`;
   } else {
     const res = sqliteDb.exec('SELECT MAX(id) as maxId FROM teams');
     let maxId = 0;
     if (res.length > 0 && res[0].values.length > 0 && res[0].values[0][0] !== null) {
       maxId = res[0].values[0][0];
     }
-    return `SIH-AITS-${String(maxId + 1).padStart(3, '0')}`;
+    return `CSIT-AITS-${String(maxId + 1).padStart(3, '0')}`;
   }
 }
 

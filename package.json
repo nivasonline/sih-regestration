@@ -1,7 +1,7 @@
 {
-  "name": "sih-2026-registration",
+  "name": "csit-2026-registration",
   "version": "1.0.0",
-  "description": "Smart India Hackathon 2026 - Internal Hackathon Registration Portal @ AITS, Tirupati",
+  "description": "CSIT Department Hackathon 2026 Registration Portal @ AITS, Tirupati",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",

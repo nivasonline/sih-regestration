@@ -58,9 +58,9 @@ function generateEmailHTML(teamData) {
     
     <!-- Header -->
     <div style="background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0f172a 100%); padding: 40px 24px; text-align: center;">
-      <div style="font-size: 14px; color: #f97316; font-weight: 700; letter-spacing: 3px; margin-bottom: 8px;">🇮🇳 SMART INDIA HACKATHON</div>
+      <div style="font-size: 14px; color: #3b82f6; font-weight: 700; letter-spacing: 3px; margin-bottom: 8px;">💻 CSIT DEPARTMENT HACKATHON</div>
       <div style="font-size: 42px; font-weight: 800; color: #ffffff; line-height: 1;">2026</div>
-      <div style="font-size: 13px; color: #94a3b8; letter-spacing: 2px; margin-top: 12px;">INTERNAL HACKATHON @ AITS, TIRUPATI</div>
+      <div style="font-size: 13px; color: #94a3b8; letter-spacing: 2px; margin-top: 12px;">DEPARTMENT OF COMPUTER SCIENCE & INFORMATION TECHNOLOGY @ AITS, TIRUPATI</div>
     </div>
 
     <!-- Success Banner -->
@@ -128,9 +128,9 @@ function generateEmailHTML(teamData) {
 
     <!-- Footer -->
     <div style="background-color: #0f172a; padding: 24px; text-align: center;">
-      <div style="font-size: 12px; color: #f97316; font-weight: 600; letter-spacing: 2px; margin-bottom: 4px;">Institute Innovation Cell (IIC)</div>
-      <div style="font-size: 11px; color: #64748b; margin-bottom: 12px;">& Entrepreneurship, Startup and Innovation Cell</div>
-      <div style="font-size: 11px; color: #475569;">SPOC: DILIP KUMAR N</div>
+      <div style="font-size: 13px; color: #ffffff; font-weight: 700; letter-spacing: 1px; margin-bottom: 4px;">Department of Computer Science & Information Technology (CSIT)</div>
+      <div style="font-size: 11px; color: #94a3b8; margin-bottom: 12px;">Annamacharya Institute of Technology and Sciences (AITS), Tirupati</div>
+      <div style="font-size: 12px; color: #3b82f6; font-weight: 600;">Head of Department: Mr. V. Samba Siva</div>
       <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid #1e293b;">
         <div style="font-size: 11px; color: #64748b; font-style: italic;">"Let's Innovate • Collaborate • Create • Transform!"</div>
       </div>
@@ -149,7 +149,7 @@ async function sendConfirmationEmails(teamData) {
   const html = generateEmailHTML(teamData);
 
   const emails = teamData.members.map(m => m.email);
-  const subject = `✅ Registration Confirmed — ${teamData.teamNumber} | SIH 2026 Internal Hackathon @ AITS`;
+  const subject = `✅ Registration Confirmed — ${teamData.teamNumber} | CSIT Department Hackathon 2026 @ AITS`;
 
   if (!transporter) {
     console.log('\n📧 ═══════════════════════════════════════');
@@ -168,7 +168,7 @@ async function sendConfirmationEmails(teamData) {
 
   try {
     await transporter.sendMail({
-      from: `"SIH 2026 @ AITS" <${process.env.SMTP_USER}>`,
+      from: `"CSIT Hackathon 2026 @ AITS" <${process.env.SMTP_USER}>`,
       to: emails.join(', '),
       subject,
       html

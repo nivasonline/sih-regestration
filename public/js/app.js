@@ -417,9 +417,9 @@ function downloadConfirmation() {
 <body>
   <div class="card">
     <div class="header">
-      <h1>🇮🇳 SMART INDIA HACKATHON</h1>
+      <h1>💻 CSIT DEPARTMENT HACKATHON</h1>
       <div class="year">2026</div>
-      <div class="sub">INTERNAL HACKATHON @ AITS, TIRUPATI</div>
+      <div class="sub">COMPUTER SCIENCE & INFORMATION TECHNOLOGY @ AITS, TIRUPATI</div>
     </div>
     <div class="team-num">
       <div class="label">Team Number</div>
@@ -447,8 +447,8 @@ function downloadConfirmation() {
       <div class="event-row">📍 MBA Seminar Hall / E-Classroom</div>
     </div>
     <div class="footer">
-      <p>Institute Innovation Cell (IIC) & Entrepreneurship, Startup and Innovation Cell</p>
-      <p style="margin-top:4px;">SPOC: DILIP KUMAR N</p>
+      <p><strong>Department of Computer Science & Information Technology (CSIT)</strong></p>
+      <p style="margin-top:4px;">Head of Department: <strong>Mr. V. Samba Siva</strong></p>
       <p style="margin-top:8px;font-style:italic;">"Let's Innovate • Collaborate • Create • Transform!"</p>
     </div>
   </div>
@@ -463,7 +463,7 @@ function downloadConfirmation() {
     // Fallback: download as file
     const a = document.createElement('a');
     a.href = url;
-    a.download = `SIH_2026_Confirmation_${registrationResult.teamNumber}.html`;
+    a.download = `CSIT_2026_Confirmation_${registrationResult.teamNumber}.html`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);

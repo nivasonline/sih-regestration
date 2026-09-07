@@ -161,7 +161,7 @@ router.get('/admin/export', adminAuth, async (req, res) => {
     const csv = parser.parse(data);
 
     res.setHeader('Content-Type', 'text/csv');
-    res.setHeader('Content-Disposition', 'attachment; filename=SIH_2026_Registrations.csv');
+    res.setHeader('Content-Disposition', 'attachment; filename=CSIT_2026_Registrations.csv');
     res.send(csv);
   } catch (error) {
     console.error('Export error:', error);
